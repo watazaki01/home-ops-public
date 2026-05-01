@@ -25,6 +25,8 @@ Share reusable ideas without exposing the real home environment.
 ## Docs
 
 - [Secret Boundary Pattern](docs/secret-boundary-pattern.md)
+- [Maintenance Window Pattern](docs/maintenance-window-pattern.md)
+- [Backup Restore Drill Template](docs/backup-restore-drill-template.md)
 
 ## 公開禁止 / Never Publish
 
