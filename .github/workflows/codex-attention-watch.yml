@@ -1,0 +1,156 @@
+name: Codex attention watch
+
+on:
+  schedule:
+    # 08:20 JST daily. Low-frequency to avoid unnecessary GitHub Actions usage.
+    - cron: "20 23 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+  issues: write
+  checks: read
+  actions: read
+  statuses: read
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check PR reviews and checks
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const marker = '<!-- codex-attention-watch -->';
+            const title = 'Codex attention inbox';
+            const {owner, repo} = context.repo;
+
+            const pulls = await github.paginate(github.rest.pulls.list, {
+              owner,
+              repo,
+              state: 'open',
+              per_page: 100,
+            });
+
+            const attention = [];
+
+            for (const pr of pulls) {
+              const reviews = await github.paginate(github.rest.pulls.listReviews, {
+                owner,
+                repo,
+                pull_number: pr.number,
+                per_page: 100,
+              });
+
+              const reviewComments = await github.paginate(github.rest.pulls.listReviewComments, {
+                owner,
+                repo,
+                pull_number: pr.number,
+                per_page: 100,
+              });
+
+              const changesRequested = reviews.filter(r => r.state === 'CHANGES_REQUESTED');
+              const unresolvedReviewSignal = reviewComments.length;
+
+              let failingChecks = [];
+              try {
+                const checks = await github.paginate(github.rest.checks.listForRef, {
+                  owner,
+                  repo,
+                  ref: pr.head.sha,
+                  per_page: 100,
+                });
+                failingChecks = checks.filter(c => ['failure', 'cancelled', 'timed_out', 'action_required'].includes(c.conclusion));
+              } catch (error) {
+                core.warning(`Could not read check runs for PR #${pr.number}: ${error.message}`);
+              }
+
+              let failingStatuses = [];
+              try {
+                const statuses = await github.paginate(github.rest.repos.listCommitStatusesForRef, {
+                  owner,
+                  repo,
+                  ref: pr.head.sha,
+                  per_page: 100,
+                });
+                failingStatuses = statuses.filter(s => ['failure', 'error'].includes(s.state));
+              } catch (error) {
+                core.warning(`Could not read statuses for PR #${pr.number}: ${error.message}`);
+              }
+
+              if (changesRequested.length || unresolvedReviewSignal || failingChecks.length || failingStatuses.length) {
+                attention.push({
+                  number: pr.number,
+                  title: pr.title,
+                  url: pr.html_url,
+                  changesRequested: changesRequested.length,
+                  reviewComments: reviewComments.length,
+                  failingChecks: failingChecks.map(c => c.name),
+                  failingStatuses: failingStatuses.map(s => s.context),
+                });
+              }
+            }
+
+            const issues = await github.paginate(github.rest.issues.listForRepo, {
+              owner,
+              repo,
+              state: 'open',
+              per_page: 100,
+            });
+            const existing = issues.find(issue => issue.title === title && issue.body && issue.body.includes(marker));
+
+            if (!attention.length) {
+              if (existing) {
+                await github.rest.issues.createComment({
+                  owner,
+                  repo,
+                  issue_number: existing.number,
+                  body: `${marker}\nNo open PR review/check attention items remain. Closing this inbox.`,
+                });
+                await github.rest.issues.update({owner, repo, issue_number: existing.number, state: 'closed'});
+              }
+              core.info('No PR review/check attention items found.');
+              return;
+            }
+
+            const lines = [
+              marker,
+              '# Codex attention inbox',
+              '',
+              'This issue is maintained by a free, rule-based GitHub Actions workflow. It does not call OpenAI API.',
+              '',
+              'Codex should inspect and address these items during the next work session.',
+              '',
+              `Last checked: ${new Date().toISOString()}`,
+              '',
+              '## Items',
+              '',
+            ];
+
+            for (const item of attention) {
+              lines.push(`- PR #${item.number}: ${item.title}`);
+              lines.push(`  - URL: ${item.url}`);
+              lines.push(`  - changes_requested: ${item.changesRequested}`);
+              lines.push(`  - review_comments: ${item.reviewComments}`);
+              lines.push(`  - failing_checks: ${item.failingChecks.length ? item.failingChecks.join(', ') : 'none'}`);
+              lines.push(`  - failing_statuses: ${item.failingStatuses.length ? item.failingStatuses.join(', ') : 'none'}`);
+            }
+
+            const body = lines.join('\n');
+
+            if (existing) {
+              await github.rest.issues.update({
+                owner,
+                repo,
+                issue_number: existing.number,
+                body,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner,
+                repo,
+                title,
+                body,
+              });
+            }
