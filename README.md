@@ -25,8 +25,14 @@ Share reusable ideas without exposing the real home environment.
 ## Docs
 
 - [Secret Boundary Pattern](docs/secret-boundary-pattern.md)
+- [Codex Handoff Template](docs/codex-handoff-template.md)
+- [Automated Watch Pattern](docs/automated-watch-pattern.md)
+- [Discord To Codex Request Pattern](docs/discord-codex-request-pattern.md)
+- [API Rate Limit Pattern](docs/api-rate-limit-pattern.md)
 - [Maintenance Window Pattern](docs/maintenance-window-pattern.md)
 - [Backup Restore Drill Template](docs/backup-restore-drill-template.md)
+- [Runtime Apply Policy Template](docs/runtime-apply-policy-template.md)
+- [Home Ops Repo Split Template](docs/home-ops-repo-split-template.md)
 
 ## 公開禁止 / Never Publish
 
@@ -45,13 +51,18 @@ Share reusable ideas without exposing the real home environment.
 ```text
 docs/
   codex-handoff-template.md
-  secret-handling-template.md
-  docker-monitoring-pattern.md
-  home-assistant-ai-pattern.md
+  secret-boundary-pattern.md
+  automated-watch-pattern.md
+  discord-codex-request-pattern.md
+  api-rate-limit-pattern.md
+  maintenance-window-pattern.md
+  runtime-apply-policy-template.md
 examples/
   env.example
-  docker-compose.example.yml
-  github-actions-example.yml
+  docker-compose.monitoring.example.yml
+.github/
+  workflows/codex-attention-watch.yml
+  ISSUE_TEMPLATE/
 ```
 
 ## 公開ルール / Publishing Rule

@@ -4,11 +4,19 @@ This repository is public.
 
 Everything committed here must be safe for strangers to read.
 
+このリポジトリは公開用です。
+
+ここにcommitする内容は、知らない人が読んでも問題ないものだけにします。
+
 ## Role
 
 `home-ops-public` contains sanitized templates and external-facing reference material only.
 
-Private operational truth belongs in `u103jp/home-ops`.
+Private operational truth belongs in a private operations ledger, for example `example-private-ledger`.
+
+`home-ops-public` はsanitized済みテンプレートと外部参考用資料だけを置く場所です。
+
+実運用の正本は、たとえば `example-private-ledger` のようなprivate運用台帳repoに置きます。
 
 ## Allowed Content
 

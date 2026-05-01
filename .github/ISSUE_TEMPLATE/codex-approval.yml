@@ -8,28 +8,28 @@ body:
     id: target
     attributes:
       label: 対象
-      placeholder: "例: UniFi VM Tailscale package update"
+      placeholder: "例: home-lab gateway package update"
     validations:
       required: true
   - type: textarea
     id: impact
     attributes:
       label: 影響範囲
-      placeholder: "例: Tailscale daemon restartの可能性。SSH経路へ一時影響の可能性。"
+      placeholder: "例: VPN daemon restartの可能性。remote accessへ一時影響の可能性。"
     validations:
       required: true
   - type: textarea
     id: proposed
     attributes:
       label: 実行予定コマンド概要
-      placeholder: "例: sudo apt-get install --only-upgrade tailscale"
+      placeholder: "例: package managerで対象packageのみ更新する"
     validations:
       required: true
   - type: textarea
     id: rollback
     attributes:
       label: 復旧/検証方法
-      placeholder: "例: tailscale status, codex-notify test, VM console fallback"
+      placeholder: "例: VPN status確認、通知test、local console fallback"
     validations:
       required: true
   - type: checkboxes

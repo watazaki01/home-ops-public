@@ -1,5 +1,5 @@
 name: Codexへの依頼
-description: VM/Desktop Codexへ作業を依頼する
+description: Codex DesktopまたはCodex runnerへ作業を依頼する
 title: "Codex依頼: "
 labels:
   - codex-request
@@ -9,7 +9,7 @@ body:
     attributes:
       label: 依頼内容
       description: Codexに確認・対応してほしいことを書いてください。
-      placeholder: "例: comfort-aiの今日のレポートを確認して、低リスク改善があればPRにしてください。"
+      placeholder: "例: 今日のレポートを確認して、低リスク改善があればDraft PRにしてください。"
     validations:
       required: true
   - type: dropdown
