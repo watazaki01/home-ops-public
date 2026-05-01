@@ -22,6 +22,10 @@ Share reusable ideas without exposing the real home environment.
 - Rule-based checks before paid API calls / 有料API前のルールベース判定
 - Public-safe runbooks / 公開可能なrunbook
 
+## Docs
+
+- [Secret Boundary Pattern](docs/secret-boundary-pattern.md)
+
 ## 公開禁止 / Never Publish
 
 - Real IP addresses / 実IPアドレス
