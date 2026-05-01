@@ -6,47 +6,45 @@ Sanitized public reference templates for home operations with Docker, Home Assis
 
 このrepoは公開されています。privateな運用ファイルをそのままコピーしないでください。
 
-This repository is intentionally public. Do not copy private operational files here.
-
-## 目的 / Purpose
+## 目的
 
 実環境を公開せず、再利用しやすい考え方だけを共有します。
 
 Share reusable ideas without exposing the real home environment.
 
-- Codex handoff templates / Codex引き継ぎテンプレート
-- Secret handling templates / secret管理テンプレート
-- Docker monitoring patterns / Docker監視パターン
-- Home Assistant + AI architecture notes / Home Assistant + AI構成メモ
-- GitHub Actions concepts / GitHub Actions設計例
-- Rule-based checks before paid API calls / 有料API前のルールベース判定
-- Public-safe runbooks / 公開可能なrunbook
+- Codex引き継ぎテンプレート
+- secret管理テンプレート
+- Docker監視パターン
+- Home Assistant + AI構成メモ
+- GitHub Actions設計例
+- 有料API前のルールベース判定
+- 公開可能なrunbook
 
-## Docs
+## docs
 
-- [Secret Boundary Pattern](docs/secret-boundary-pattern.md)
-- [Codex Handoff Template](docs/codex-handoff-template.md)
-- [Automated Watch Pattern](docs/automated-watch-pattern.md)
-- [Discord To Codex Request Pattern](docs/discord-codex-request-pattern.md)
-- [API Rate Limit Pattern](docs/api-rate-limit-pattern.md)
-- [Maintenance Window Pattern](docs/maintenance-window-pattern.md)
-- [Backup Restore Drill Template](docs/backup-restore-drill-template.md)
-- [Runtime Apply Policy Template](docs/runtime-apply-policy-template.md)
-- [Home Ops Repo Split Template](docs/home-ops-repo-split-template.md)
+- [Secret境界パターン](docs/secret-boundary-pattern.md)
+- [Codex引き継ぎテンプレート](docs/codex-handoff-template.md)
+- [自動監視パターン](docs/automated-watch-pattern.md)
+- [DiscordからCodex依頼への流れ](docs/discord-codex-request-pattern.md)
+- [APIレート制限パターン](docs/api-rate-limit-pattern.md)
+- [メンテナンス時間帯設計](docs/maintenance-window-pattern.md)
+- [復元訓練テンプレート](docs/backup-restore-drill-template.md)
+- [runtime反映ポリシーテンプレート](docs/runtime-apply-policy-template.md)
+- [自宅運用repo分割テンプレート](docs/home-ops-repo-split-template.md)
 
-## 公開禁止 / Never Publish
+## 公開禁止
 
-- Real IP addresses / 実IPアドレス
-- Real hostnames / 実ホスト名
-- Tailnet details / Tailnet詳細
-- SSH usernames tied to production access / 本番アクセスに結びつくSSHユーザー名
-- API keys, tokens, private keys, or webhook URLs / API key、token、秘密鍵、webhook URL
-- Real `.env` files / 実 `.env`
-- Home Assistant entity IDs that expose private home layout / 家の構成が分かるHome Assistant entity ID
-- Real logs, reports, screenshots, or backup files / 実ログ、report、screenshot、backup
-- Exact private production paths if they increase attack usefulness / 攻撃ヒントになる本番パス
+- 実IPアドレス
+- 実ホスト名
+- Tailnet詳細
+- 本番アクセスに結びつくSSHユーザー名
+- API key、token、秘密鍵、webhook URL
+- 実 `.env`
+- 家の構成が分かるHome Assistant entity ID
+- 実ログ、report、screenshot、backup
+- 攻撃ヒントになるprivate production path
 
-## 推奨構成 / Suggested Structure
+## 推奨構成
 
 ```text
 docs/
@@ -65,7 +63,7 @@ examples/
   ISSUE_TEMPLATE/
 ```
 
-## 公開ルール / Publishing Rule
+## 公開ルール
 
 まずprivate repoで下書きし、手動でsanitizeしてから公開します。
 

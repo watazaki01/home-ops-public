@@ -1,10 +1,10 @@
-# Runtime Apply Policy Template / runtime反映ポリシーテンプレート
+# runtime反映ポリシーテンプレート / Runtime Apply Policy Template
 
 Repository changes and production runtime changes are separate.
 
 repo変更と本番runtime反映は別物として扱います。
 
-## Classes / 分類
+## 分類 / Classes
 
 | Class | Meaning |
 |---|---|
@@ -15,7 +15,7 @@ repo変更と本番runtime反映は別物として扱います。
 | `runtime_apply_restart` | Restart required / restartあり |
 | `runtime_apply_dangerous` | Secrets/network/sudo/cron / 危険操作 |
 
-## Rule / ルール
+## ルール / Rule
 
 Production runtime changes need explicit approval and rollback.
 

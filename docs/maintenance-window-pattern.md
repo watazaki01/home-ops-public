@@ -1,16 +1,16 @@
-# Maintenance Window Pattern / メンテナンス時間帯設計
+# メンテナンス時間帯設計 / Maintenance Window Pattern
 
 Public sanitized template for choosing safe maintenance windows in a home-lab.
 
 自宅サーバーやNASを安全に更新するための、公開可能な時間帯設計テンプレートです。
 
-## Rule
+## ルール / Rule
 
 Do not pick a maintenance window by intuition. First inventory scheduled work.
 
 勘で時間を決めず、先に定期ジョブを棚卸しします。
 
-## Check
+## 確認 / Check
 
 - cron / systemd timers
 - Docker backup containers
@@ -20,7 +20,7 @@ Do not pick a maintenance window by intuition. First inventory scheduled work.
 - router or VPN update jobs
 - family usage patterns
 
-## Avoid
+## 避けること / Avoid
 
 - backup windows
 - VPN/Tailscale update windows
@@ -28,7 +28,7 @@ Do not pick a maintenance window by intuition. First inventory scheduled work.
 - just before daily reports
 - times when no one can recover manually
 
-## Good Window Shape
+## よい時間帯の形 / Good Window Shape
 
 A good window has:
 
@@ -38,7 +38,7 @@ A good window has:
 - a human available for rollback
 - clear owner approval for reboot
 
-## Approval Template
+## 承認テンプレート / Approval Template
 
 ```text
 Can I start maintenance at <time>?

@@ -1,10 +1,10 @@
-# API Rate Limit Pattern / APIレート制限パターン
+# APIレート制限パターン / API Rate Limit Pattern
 
 Public-safe pattern for small home-ops automations that call GitHub, a password manager, VPN APIs, or AI tools.
 
 GitHub、password manager、VPN API、AI toolsを使う小さな自宅運用自動化向けの公開用パターンです。
 
-## Principles / 原則
+## 原則 / Principles
 
 - Do not poll too often.
 - Do not write a GitHub issue or Discord message when nothing changed.
@@ -18,7 +18,7 @@ GitHub、password manager、VPN API、AI toolsを使う小さな自宅運用自�
 - 連打せずbackoffする。
 - token、秘密鍵、webhook URL、secret値を表示しない。
 
-## Suggested Behavior / 推奨動作
+## 推奨動作 / Suggested Behavior
 
 | State | Action |
 |---|---|
@@ -28,7 +28,7 @@ GitHub、password manager、VPN API、AI toolsを使う小さな自宅運用自�
 | Needs approval | create/update one GitHub issue |
 | Needs human work | create/update one GitHub issue |
 
-## Backoff Shape / backoff例
+## backoff例 / Backoff Shape
 
 ```text
 attempt 1: wait 10s
@@ -42,7 +42,7 @@ Use the service-provided `Retry-After` header when available.
 
 `Retry-After` headerがある場合は、それを優先します。
 
-## Password Manager Note / password managerの注意
+## password managerの注意 / Password Manager Note
 
 Password manager APIs can be the first bottleneck in a home automation stack.
 
@@ -55,7 +55,7 @@ Recommended:
 - cache short-lived runtime env locally with strict file permissions
 - consider a local secret cache such as 1Password Connect for repeated local reads
 
-## GitHub Note / GitHubの注意
+## GitHubの注意 / GitHub Note
 
 For small repos, GitHub App or Actions limits are usually enough if polling is low-frequency.
 

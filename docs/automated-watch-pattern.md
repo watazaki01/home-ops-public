@@ -1,10 +1,10 @@
-# Automated Watch Pattern / 自動監視パターン
+# 自動監視パターン / Automated Watch Pattern
 
 A low-cost pattern for checking GitHub PR attention items while a local AI assistant app is offline.
 
 ローカルAIアシスタントアプリが落ちている間も、低コストでGitHub PRの要対応項目を見つけるパターンです。
 
-## Idea / 考え方
+## 考え方 / Idea
 
 Use GitHub Actions on a low-frequency schedule.
 
@@ -24,7 +24,7 @@ If attention is needed, create or update an issue named:
 Codex attention inbox
 ```
 
-## Cost Rule / コストルール
+## コストルール / Cost Rule
 
 Do not call paid AI APIs for routine polling.
 

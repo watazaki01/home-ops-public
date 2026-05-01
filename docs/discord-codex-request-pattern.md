@@ -1,10 +1,10 @@
-# Discord To Codex Request Pattern / DiscordからCodex依頼への流れ
+# DiscordからCodex依頼への流れ / Discord To Codex Request Pattern
 
 Public-safe pattern for using Discord as a lightweight request UI while keeping GitHub issues as the audit log.
 
 Discordを気軽な依頼UIにしつつ、GitHub issueを作業台帳と承認ログにする公開用パターンです。
 
-## Goal / 目的
+## 目的 / Goal
 
 - Let a human send a short request from a phone.
 - Keep the durable task record in GitHub issues.
@@ -16,7 +16,7 @@ Discordを気軽な依頼UIにしつつ、GitHub issueを作業台帳と承認�
 - リスクのある操作は明示承認を必須にする。
 - secretをチャット、issue、ログに出さない。
 
-## Channel Split / チャンネル分離
+## チャンネル分離 / Channel Split
 
 ```text
 #codex-requests
@@ -30,7 +30,7 @@ Discordを気軽な依頼UIにしつつ、GitHub issueを作業台帳と承認�
 
 Do not post healthy scheduled check results. Keep them in local logs only.
 
-## Flow / 流れ
+## 流れ / Flow
 
 ```text
 human in #codex-requests
@@ -41,7 +41,7 @@ human in #codex-requests
   -> Discord answer when useful
 ```
 
-## Approval Rule / 承認ルール
+## 承認ルール / Approval Rule
 
 Risky operations should not run from a Discord message alone.
 
@@ -58,7 +58,7 @@ When multiple approval-required issues exist, require the issue number.
 
 承認待ちissueが複数ある場合は、issue番号付き承認を要求します。
 
-## Risky Operation Examples / 承認が必要な例
+## 承認が必要な例 / Risky Operation Examples
 
 - production runtime changes
 - Docker/Home Assistant restarts
@@ -69,7 +69,7 @@ When multiple approval-required issues exist, require the issue number.
 - destructive file operations
 - paid API use outside an approved workflow
 
-## Public Safety / 公開安全性
+## 公開安全性 / Public Safety
 
 Do not publish:
 

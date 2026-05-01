@@ -1,14 +1,14 @@
-# Secret Boundary Pattern
+# secret境界パターン / Secret Boundary Pattern
 
 This is a public, sanitized pattern for small home-lab or self-hosted operations.
 
 No real hostnames, tokens, keys, webhook URLs, IPs, or `.env` values should be copied into this document.
 
-## Goal
+## 目的 / Goal
 
 Keep source control useful without turning it into a secret store.
 
-## Recommended Split
+## 推奨分担 / Recommended Split
 
 | Place | Role |
 |---|---|
@@ -17,7 +17,7 @@ Keep source control useful without turning it into a secret store.
 | Server `.env` files | Runtime copy for Docker/services. |
 | GitHub repositories | Docs, templates, fake examples, secret names, and recovery steps. |
 
-## Rules
+## ルール / Rules
 
 - Commit `.env.example`, never real `.env`.
 - Commit secret names and 1Password item names only when appropriate.
@@ -26,7 +26,7 @@ Keep source control useful without turning it into a secret store.
 - Prefer service accounts for automation credentials.
 - Prefer read-only checks and draft PRs for unattended automation.
 
-## Docker Compose Pattern
+## Docker Composeパターン / Docker Compose Pattern
 
 Bad:
 
@@ -52,7 +52,7 @@ services:
 DISCORD_WEBHOOK_URL=op://example-vault/example-item/DISCORD_WEBHOOK_URL
 ```
 
-## GitHub Actions Pattern
+## GitHub Actionsパターン / GitHub Actions Pattern
 
 Use one bootstrap secret to read values from 1Password:
 
@@ -77,7 +77,7 @@ if [ -z "${API_KEY:-}" ]; then
 fi
 ```
 
-## Human Approval Boundary
+## 人間承認の境界 / Human Approval Boundary
 
 Automation may prepare safe changes, but production-impacting operations should require explicit owner approval:
 
@@ -88,7 +88,7 @@ Automation may prepare safe changes, but production-impacting operations should 
 - DNS/Tailscale/network policy change
 - destructive file operation
 
-## Recovery Ledger
+## 復旧台帳 / Recovery Ledger
 
 Keep a private ledger that records:
 

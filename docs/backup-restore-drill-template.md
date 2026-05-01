@@ -1,16 +1,16 @@
-# Backup Restore Drill Template / 復元訓練テンプレート
+# 復元訓練テンプレート / Backup Restore Drill Template
 
 Public sanitized template for checking whether backups are actually restorable.
 
 バックアップが「ある」だけでなく「戻せる」ことを確認するための公開用テンプレートです。
 
-## Principle
+## 原則 / Principle
 
 A backup is not complete until restore has been rehearsed.
 
 復元手順を確認して初めてバックアップと言えます。
 
-## Inventory
+## 台帳 / Inventory
 
 | Data | Source |
 |---|---|
@@ -21,7 +21,7 @@ A backup is not complete until restore has been rehearsed.
 | service data | backup archive |
 | external monitor config | password manager + sanitized scripts |
 
-## Non-Destructive Drill
+## 非破壊の復元訓練 / Non-Destructive Drill
 
 1. Clone repositories.
 2. Confirm password manager item names exist without printing values.
@@ -30,7 +30,7 @@ A backup is not complete until restore has been rehearsed.
 5. Prepare a temporary restore directory.
 6. Write down the exact production restore order.
 
-## Approval Boundary
+## 承認境界 / Approval Boundary
 
 Require human approval before:
 
@@ -40,7 +40,7 @@ Require human approval before:
 - deleting old backups
 - rebooting hosts
 
-## Record
+## 記録 / Record
 
 ```text
 date:

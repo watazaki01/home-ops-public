@@ -1,10 +1,10 @@
-# Home Ops Repo Split Template / 自宅運用repo分割テンプレート
+# 自宅運用repo分割テンプレート / Home Ops Repo Split Template
 
 This is a public-safe template for splitting home operations repositories.
 
 これは自宅運用repo分割の公開用テンプレートです。実IP、secret、host名は入れないでください。
 
-## Recommended Split / 推奨分割
+## 推奨分割 / Recommended Split
 
 | Repository | Visibility | Role |
 |---|---:|---|
@@ -14,13 +14,13 @@ This is a public-safe template for splitting home operations repositories.
 | `home-assistant-config` | private | HA config source excluding secrets / secret除外のHA設定 |
 | `home-ops-public` | public | Sanitized templates / 公開用テンプレート |
 
-## Secret Rule / secretルール
+## secretルール / Secret Rule
 
 Store real secrets in a password manager, not GitHub.
 
 secret本体はGitHubではなくpassword managerへ置きます。
 
-## Runtime Rule / runtimeルール
+## runtimeルール / Runtime Rule
 
 Repository changes and production runtime changes are separate.
 
