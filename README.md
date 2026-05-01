@@ -32,6 +32,7 @@ Share reusable ideas without exposing the real home environment.
 - [runtime反映ポリシーテンプレート](docs/runtime-apply-policy-template.md)
 - [自宅運用repo分割テンプレート](docs/home-ops-repo-split-template.md)
 - [公開release基準](docs/release-criteria.md)
+- GitHub Actions: 公開release安全チェック でsecret/private情報らしき文字列を検出
 
 ## 公開禁止
 

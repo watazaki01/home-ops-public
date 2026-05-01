@@ -1,0 +1,52 @@
+name: 公開release安全チェック
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  public-safety:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: secret/private情報らしき文字列を確認
+        shell: bash
+        run: |
+          set -euo pipefail
+          patterns=(
+            'sk-[A-Za-z0-9_-]{20,}'
+            'tskey-'
+            'discord\.com/api/webhooks/[0-9]+/[A-Za-z0-9_-]+'
+            'BEGIN .*PRIVATE'
+            'OPENAI_API_KEY=.*[A-Za-z0-9]'
+            'GH_APP_PRIVATE_KEY=.*BEGIN'
+            '192\.168\.'
+            '10\.0\.'
+            '172\.16\.'
+          )
+          status=0
+          for pattern in "${patterns[@]}"; do
+            if grep -RInE --exclude-dir=.git --exclude='release-criteria.md' --exclude='public-release-check.yml' "$pattern" .; then
+              echo "::error::公開禁止情報らしき文字列を検出しました: $pattern"
+              status=1
+            fi
+          done
+          exit "$status"
+
+      - name: 必須ファイルを確認
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f README.md
+          test -f index.md
+          test -f docs/release-criteria.md
+          grep -q '公開禁止' README.md
+          grep -q '公開release基準' docs/release-criteria.md
