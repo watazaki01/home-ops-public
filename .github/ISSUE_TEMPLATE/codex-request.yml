@@ -1,0 +1,37 @@
+name: Codexへの依頼
+description: VM/Desktop Codexへ作業を依頼する
+title: "Codex依頼: "
+labels:
+  - codex-request
+body:
+  - type: textarea
+    id: request
+    attributes:
+      label: 依頼内容
+      description: Codexに確認・対応してほしいことを書いてください。
+      placeholder: "例: comfort-aiの今日のレポートを確認して、低リスク改善があればPRにしてください。"
+    validations:
+      required: true
+  - type: dropdown
+    id: risk
+    attributes:
+      label: 想定リスク
+      options:
+        - 読み取り確認のみ
+        - repo/docs変更のみ
+        - Draft PR作成まで
+        - 本番/runtime変更なので承認が必要
+        - secret/鍵/network変更なので承認が必要
+    validations:
+      required: true
+  - type: textarea
+    id: constraints
+    attributes:
+      label: 制約
+      description: Codexが守るべき制約を書いてください。
+      placeholder: "本番反映しない。OpenAI APIは使わない。secretは表示しない。"
+  - type: textarea
+    id: context
+    attributes:
+      label: 補足
+      description: 関連リンク、Discord message id、ログ、メモなど。

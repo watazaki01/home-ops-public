@@ -1,4 +1,4 @@
-name: Codex attention watch
+name: Codex要確認チェック
 
 on:
   schedule:
@@ -18,12 +18,12 @@ jobs:
   watch:
     runs-on: ubuntu-latest
     steps:
-      - name: Check PR reviews and checks
+      - name: PRレビューとActions結果を確認
         uses: actions/github-script@v7
         with:
           script: |
             const marker = '<!-- codex-attention-watch -->';
-            const title = 'Codex attention inbox';
+            const title = 'Codex要確認';
             const {owner, repo} = context.repo;
 
             const pulls = await github.paginate(github.rest.pulls.list, {
@@ -106,7 +106,7 @@ jobs:
                   owner,
                   repo,
                   issue_number: existing.number,
-                  body: `${marker}\nNo open PR review/check attention items remain. Closing this inbox.`,
+                  body: `${marker}\n未対応のPRレビュー/チェック項目がなくなったため、このissueを閉じます。`,
                 });
                 await github.rest.issues.update({owner, repo, issue_number: existing.number, state: 'closed'});
               }
@@ -116,25 +116,25 @@ jobs:
 
             const lines = [
               marker,
-              '# Codex attention inbox',
+              '# Codex要確認',
               '',
-              'This issue is maintained by a free, rule-based GitHub Actions workflow. It does not call OpenAI API.',
+              'このissueは、無料寄りのルールベースGitHub Actions workflowで自動更新しています。OpenAI APIは使いません。',
               '',
-              'Codex should inspect and address these items during the next work session.',
+              'Codexは次回作業時に、この一覧を確認して安全に対応できるものから処理します。',
               '',
-              `Last checked: ${new Date().toISOString()}`,
+              `最終確認: ${new Date().toISOString()}`,
               '',
-              '## Items',
+              '## 要確認項目',
               '',
             ];
 
             for (const item of attention) {
               lines.push(`- PR #${item.number}: ${item.title}`);
               lines.push(`  - URL: ${item.url}`);
-              lines.push(`  - changes_requested: ${item.changesRequested}`);
-              lines.push(`  - review_comments: ${item.reviewComments}`);
-              lines.push(`  - failing_checks: ${item.failingChecks.length ? item.failingChecks.join(', ') : 'none'}`);
-              lines.push(`  - failing_statuses: ${item.failingStatuses.length ? item.failingStatuses.join(', ') : 'none'}`);
+              lines.push(`  - 変更要求レビュー数: ${item.changesRequested}`);
+              lines.push(`  - レビューコメント数: ${item.reviewComments}`);
+              lines.push(`  - 失敗中のChecks: ${item.failingChecks.length ? item.failingChecks.join(', ') : 'なし'}`);
+              lines.push(`  - 失敗中のStatuses: ${item.failingStatuses.length ? item.failingStatuses.join(', ') : 'なし'}`);
             }
 
             const body = lines.join('\n');
