@@ -14,6 +14,7 @@ Share reusable ideas without exposing the real home environment.
 
 - Codex引き継ぎテンプレート
 - secret管理テンプレート
+- runtime secret access / Connect-style broker pattern
 - Docker監視パターン
 - Home Assistant + AI構成メモ
 - GitHub Actions設計例
@@ -23,6 +24,7 @@ Share reusable ideas without exposing the real home environment.
 ## docs
 
 - [Secret境界パターン](docs/secret-boundary-pattern.md)
+- [runtime secret access pattern](docs/runtime-secret-access-pattern.md)
 - [Codex引き継ぎテンプレート](docs/codex-handoff-template.md)
 - [自動監視パターン](docs/automated-watch-pattern.md)
 - [DiscordからCodex依頼への流れ](docs/discord-codex-request-pattern.md)
@@ -52,6 +54,7 @@ Share reusable ideas without exposing the real home environment.
 docs/
   codex-handoff-template.md
   secret-boundary-pattern.md
+  runtime-secret-access-pattern.md
   automated-watch-pattern.md
   discord-codex-request-pattern.md
   api-rate-limit-pattern.md
