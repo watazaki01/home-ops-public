@@ -11,6 +11,7 @@
 - private repo名やprivate runtime pathを、攻撃ヒントになる形で書いていない。
 - 内容が「実運用の正本」ではなく、sanitized template / pattern / runbookとして読める。
 - 日本語を正本にし、必要な箇所だけ英語を補助として併記している。
+- Markdownの相対リンク先が存在し、入口文書から新規docsへ到達できる。
 
 ## release前チェック
 
@@ -21,6 +22,9 @@ rg -n --glob '!**/.git/**' --glob '!docs/release-criteria.md' "<secret-or-privat
 ```
 
 上のチェックで一致が出た場合は、公開前に必ず人間が確認します。
+
+CIではMarkdownの相対リンク切れも確認します。外部URL、ページ内anchor、
+画像URLはこの軽量チェックの対象外とし、必要に応じて別途確認します。
 
 ## GitHub Pages公開ルール
 

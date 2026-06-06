@@ -27,6 +27,7 @@ Share reusable ideas without exposing the real home environment.
 - [runtime secret access pattern](docs/runtime-secret-access-pattern.md)
 - [Codex引き継ぎテンプレート](docs/codex-handoff-template.md)
 - [自動監視パターン](docs/automated-watch-pattern.md)
+- [一時障害に強いstatus refresh](docs/resilient-status-refresh-pattern.md)
 - [DiscordからCodex依頼への流れ](docs/discord-codex-request-pattern.md)
 - [APIレート制限パターン](docs/api-rate-limit-pattern.md)
 - [メンテナンス時間帯設計](docs/maintenance-window-pattern.md)
@@ -56,6 +57,7 @@ docs/
   secret-boundary-pattern.md
   runtime-secret-access-pattern.md
   automated-watch-pattern.md
+  resilient-status-refresh-pattern.md
   discord-codex-request-pattern.md
   api-rate-limit-pattern.md
   maintenance-window-pattern.md

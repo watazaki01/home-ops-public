@@ -20,6 +20,7 @@ English note: this repo contains sanitized templates and public-safe reference m
 - Codex handoff template
 - secret handling template
 - Docker / Home Assistant monitoring pattern
+- bounded retry and dependency-ordered status refresh pattern
 - fake `.env.example`
 - public-safe runbook
 

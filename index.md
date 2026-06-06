@@ -9,6 +9,7 @@
 - [secret境界パターン](docs/secret-boundary-pattern.md)
 - [runtime secret access pattern](docs/runtime-secret-access-pattern.md)
 - [Codex引き継ぎテンプレート](docs/codex-handoff-template.md)
+- [一時障害に強いstatus refresh](docs/resilient-status-refresh-pattern.md)
 - [DiscordからCodex依頼への流れ](docs/discord-codex-request-pattern.md)
 - [APIレート制限パターン](docs/api-rate-limit-pattern.md)
 - [メンテナンス時間帯設計](docs/maintenance-window-pattern.md)
