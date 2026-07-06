@@ -50,7 +50,7 @@ Bad:
 services:
   app:
     environment:
-      - DISCORD_WEBHOOK_URL=https://example.invalid/real-secret
+      - DISCORD_WEBHOOK_URL=<webhook-url-from-private-secret-store>
 ```
 
 Good:
@@ -65,7 +65,7 @@ services:
 ```
 
 ```dotenv
-DISCORD_WEBHOOK_URL=op://example-vault/example-item/DISCORD_WEBHOOK_URL
+DISCORD_WEBHOOK_URL=<password-manager-reference>
 ```
 
 ## GitHub Actionsパターン / GitHub Actions Pattern
@@ -81,7 +81,7 @@ Use one bootstrap secret to read values from a password manager:
   with:
     export-env: true
   env:
-    API_KEY: "op://example-vault/example-api-key/API_KEY"
+    API_KEY: "<password-manager-reference>"
 ```
 
 Validate presence without printing values:

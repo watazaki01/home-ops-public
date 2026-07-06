@@ -12,6 +12,7 @@
 - 内容が「実運用の正本」ではなく、sanitized template / pattern / runbookとして読める。
 - 日本語を正本にし、必要な箇所だけ英語を補助として併記している。
 - Markdownの相対リンク先が存在し、入口文書から新規docsへ到達できる。
+- GitHub Actionsなどの公開repo運用依存はDependabotなどで更新候補を検知できる。
 
 ## release前チェック
 
@@ -49,3 +50,4 @@ CIではMarkdownの相対リンク切れも確認します。外部URL、ペー�
 - GitHub Pages URLが開ける。
 - トップページから主要docsへ移動できる。
 - GitHub repo description / homepage URL が現在の公開URLと一致している。
+- Dependabot alertとActionsの直近結果に未対応の失敗がない。
