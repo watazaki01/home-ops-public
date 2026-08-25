@@ -17,6 +17,9 @@
 - [runtime反映ポリシーテンプレート](docs/runtime-apply-policy-template.md)
 - [自宅運用repo分割テンプレート](docs/home-ops-repo-split-template.md)
 - [公開release基準](docs/release-criteria.md)
+- [Tailscale最小権限化の段階移行](docs/tailscale-least-privilege-rollout-pattern.md)
+- [IoT通信ログから最小権限Firewall候補を作る](docs/iot-flow-least-privilege-analysis-pattern.md)
+- [GitHub自動運用のノイズ抑制](docs/github-automation-hygiene-pattern.md)
 
 ## 公開禁止
 
