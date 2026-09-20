@@ -6,6 +6,8 @@
 
 ## まず読むもの
 
+初めての方は[READMEの導入案内](README.md)から、改善を提案する方は[貢献ガイド](CONTRIBUTING.md)からお読みください。
+
 - [secret境界パターン](docs/secret-boundary-pattern.md)
 - [runtime secret access pattern](docs/runtime-secret-access-pattern.md)
 - [Codex引き継ぎテンプレート](docs/codex-handoff-template.md)

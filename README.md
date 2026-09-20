@@ -6,6 +6,20 @@ Sanitized public reference templates for home operations with Docker, Home Assis
 
 このrepoは公開されています。privateな運用ファイルをそのままコピーしないでください。
 
+## はじめに / Start here
+
+DockerやHome Assistantの運用を整理したい人、AIに作業を任せる前に権限・確認・復元の境界を決めたい人向けの資料集です。完成済みの自動運用製品や、そのまま本番へ導入できる構成一式ではありません。
+
+Reference material for maintainers who want safer monitoring, recovery, and AI-assisted operations—not a turnkey deployment.
+
+1. [秘密情報の境界](docs/secret-boundary-pattern.md)を確認する。
+2. [引き継ぎテンプレート](docs/codex-handoff-template.md)で目的と禁止事項を整理する。
+3. [変更の反映方針](docs/runtime-apply-policy-template.md)と[復元訓練](docs/backup-restore-drill-template.md)を準備する。
+
+読むだけならAPI鍵や実環境への接続は不要です。例の実行には環境ごとの検証が必要で、外部サービスには費用がかかる場合があります。
+
+改善提案は[貢献ガイド](CONTRIBUTING.md)をご覧ください。
+
 ## 目的
 
 実環境を公開せず、再利用しやすい考え方だけを共有します。
