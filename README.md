@@ -20,7 +20,13 @@ Reference material for maintainers who want safer monitoring, recovery, and AI-a
 
 改善提案は[貢献ガイド](CONTRIBUTING.md)をご覧ください。
 
-## 目的
+## License / ライセンス
+
+このリポジトリのオリジナル資料・例は[MIT License](LICENSE)で提供します。第三者の製品・リンク先コンテンツの権利はそれぞれの権利者に帰属します。
+
+セキュリティ上の問題は[非公開報告の案内](SECURITY.md)をご覧ください。
+
+## 目的と提供内容
 
 実環境を公開せず、再利用しやすい考え方だけを共有します。
 
